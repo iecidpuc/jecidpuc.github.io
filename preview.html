@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ignacio Cid | PhD Candidate in Criminology</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #1d4ed8;
+      --border: #e5e7eb;
+      --max: 1050px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .brand { font-weight: 700; font-size: 1.05rem; color: var(--text); }
+    .menu { display: flex; flex-wrap: wrap; gap: 18px; font-size: 0.96rem; }
+    .hero { padding: 72px 0 36px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: #eef2f7;
+    }
+    h1 { margin: 0 0 10px; font-size: 2.3rem; line-height: 1.15; }
+    .subtitle { font-size: 1.08rem; color: var(--muted); margin-bottom: 18px; }
+    .intro { font-size: 1rem; max-width: 760px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .button {
+      display: inline-block; padding: 10px 16px; border-radius: 10px;
+      border: 1px solid var(--accent); color: white; background: var(--accent); font-weight: 600;
+    }
+    .button.secondary { background: white; color: var(--accent); }
+    section { padding: 26px 0; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    h2 { margin-top: 0; margin-bottom: 18px; font-size: 1.5rem; }
+    h3 { margin-bottom: 8px; font-size: 1.08rem; }
+    .interest-list, .link-list { margin: 0; padding-left: 20px; }
+    .grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .entry { padding: 14px 0; border-top: 1px solid var(--border); }
+    .entry:first-child { border-top: none; padding-top: 0; }
+    .entry-title { font-weight: 700; }
+    .entry-meta { color: var(--muted); font-size: 0.95rem; margin: 2px 0 6px; }
+    footer { padding: 36px 0 56px; color: var(--muted); font-size: 0.95rem; }
+    @media (max-width: 760px) {
+      .hero-grid, .grid-two { grid-template-columns: 1fr; }
+      .profile-photo { width: 180px; height: 180px; }
+      h1 { font-size: 1.9rem; }
+      .nav { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Ignacio Cid</div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <img src="profile.jpg" alt="Portrait of Ignacio Cid" class="profile-photo" />
+        <div>
+          <h1>Ignacio Cid</h1>
+          <div class="subtitle">PhD Candidate in Criminology | University of Lausanne</div>
+          <p class="intro">
+            I am a PhD candidate in Criminology at the University of Lausanne. My research lies at the intersection of criminology, sociology, and spatial analysis, with a particular focus on lethal violence in Latin America. I am especially interested in homicide trends, spatial concentration of crime, subnational inequalities, and the macro-social and cultural factors associated with violence.
+          </p>
+          <div class="button-row">
+            <a class="button" href="#contact">Contact</a>
+            <a class="button secondary" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="card">
+          <h2>About</h2>
+          <p>
+            My work combines quantitative methods, spatial analysis, and comparative research. I have broader interests in sociology of religion, public security, Latin American studies, and data visualization.
+          </p>
+          <h3>Research interests</h3>
+          <ul class="interest-list">
+            <li>Homicide and lethal violence in Latin America</li>
+            <li>Spatial concentration of crime</li>
+            <li>Comparative and subnational criminology</li>
+            <li>Sociology of religion and violence</li>
+            <li>Quantitative methods, spatial methods, and data visualization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="card">
+          <h2>Research</h2>
+          <div class="entry">
+            <div class="entry-title">Homicide in Latin America</div>
+            <div class="entry-meta">Comparative and subnational analysis</div>
+            <div>I study regional and subnational variation in homicide, with special attention to long-term trends, concentration, and internal heterogeneity within countries.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-title">Homicide in Chile</div>
+            <div class="entry-meta">Municipal-level and spatial approaches</div>
+            <div>My work on Chile examines the territorial concentration of homicide, municipal-level predictors of lethal violence, and the spatial clustering of high-risk areas.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-title">Religion and violence</div>
+            <div class="entry-meta">Culture, context, and violent outcomes</div>
+            <div>I also explore the relationship between religion, culture, and violence, including the contextual effects of religious environments on violent outcomes.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-title">Methods</div>
+            <div class="entry-meta">Quantitative and spatial methods</div>
+            <div>My work uses multilevel models, logistic and count models, spatial autocorrelation, comparative designs, and data visualization.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="card">
+          <h2>Publications</h2>
+          <div class="entry">
+            <div class="entry-title">Article or chapter title</div>
+            <div class="entry-meta">Journal or Publisher, Year</div>
+            <div>Short description of the publication or working paper.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-title">Working paper title</div>
+            <div class="entry-meta">Working Paper, Year</div>
+            <div>Short description of the project, dataset, or findings.</div>
+          </div>
+          <p style="margin-top: 18px; color: #6b7280;">
+            Replace these placeholders with your peer-reviewed articles, reports, conference papers, and working papers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <div class="container">
+        <div class="card">
+          <h2>Teaching</h2>
+          <div class="entry">
+            <div class="entry-title">Course or teaching activity</div>
+            <div class="entry-meta">Institution, Year</div>
+            <div>Short description of your role, content, or teaching contribution.</div>
+          </div>
+          <div class="entry">
+            <div class="entry-title">Methods, criminology, or sociology seminar</div>
+            <div class="entry-meta">Institution, Year</div>
+            <div>Short description of course topics and student audience.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv">
+      <div class="container">
+        <div class="card">
+          <h2>CV</h2>
+          <p>You can download my current curriculum vitae below.</p>
+          <p><a class="button" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a></p>
+          <ul class="interest-list">
+            <li>PhD Candidate in Criminology, University of Lausanne</li>
+            <li>Research interests: homicide, spatial criminology, Latin America, sociology of religion</li>
+            <li>Languages: Spanish, English, French, Portuguese</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card">
+          <h2>Contact</h2>
+          <p>I am happy to connect regarding research, academic collaboration, or conference participation.</p>
+          <div class="grid-two">
+            <div>
+              <p><strong>Email:</strong> <a href="mailto:your.email@unil.ch">your.email@unil.ch</a></p>
+              <p><strong>Institution:</strong> University of Lausanne</p>
+              <p><strong>Location:</strong> Lausanne, Switzerland</p>
+            </div>
+            <div>
+              <h3>Links</h3>
+              <ul class="link-list">
+                <li><a href="#">Google Scholar</a></li>
+                <li><a href="#">ORCID</a></li>
+                <li><a href="#">ResearchGate</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">GitHub</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Ignacio Cid. Last updated manually.
+    </div>
+  </footer>
+</body>
+</html>
