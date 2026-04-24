@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ignacio Cid Pozo | PhD Candidate in Criminology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface2: #1a2438;
+      --text: #e8edf5;
+      --muted: #7a8aaa;
+      --accent: #4f8fd4;
+      --accent-hover: #244c73;
+      --accent-light: #dbeafe;
+      --accent-light-text: #1e4a8a;
+      --border: rgba(255,255,255,0.07);
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; position: relative; }
+
+    /* NAV */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,17,32,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 20px; }
+    .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text); }
+    .brand span { color: var(--accent); }
+    .menu { display: flex; flex-wrap: wrap; gap: 28px; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+    .menu a { color: var(--muted); transition: color 0.2s; }
+    .menu a:hover { color: var(--accent); text-decoration: none; }
+
+    /* BUTTONS */
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .button:hover { background: var(--accent-hover); transform: translateY(-1px); text-decoration: none; color: white; }
+
+    .button-secondary {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent-light-text);
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .button-secondary:hover { background: #bfdbfe; transform: translateY(-1px); text-decoration: none; }
+
+    /* HERO */
+    .hero { padding: 100px 0 80px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -180px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(79,143,212,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 260px; gap: 60px; align-items: center; }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
+
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 24px; }
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 620px; line-height: 1.75; font-weight: 300; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
+    .tag { background: var(--surface2); border: 1px solid var(--border); border-radius: 40px; padding: 5px 14px; font-size: 0.8rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+    .tag.blue { border-color: rgba(79,143,212,0.35); color: var(--accent); }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+    .profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; text-align: center; padding: 32px 24px; }
+    .profile-photo-placeholder {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: var(--surface2); border: 2px solid rgba(79,143,212,0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--accent);
+    }
+    .profile-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 4px; }
+    .profile-role { font-size: 0.8rem; color: var(--muted); margin-bottom: 18px; line-height: 1.5; }
+    .profile-info { list-style: none; text-align: left; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); padding-top: 16px; }
+    .profile-info li { padding: 5px 0; display: flex; gap: 8px; }
+    .profile-info li .icon { color: var(--accent); }
+
+    /* SECTIONS */
+    section { padding: 60px 0; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 36px; line-height: 1.2; }
+    h2 em { font-style: italic; color: var(--muted); }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; }
+    .timeline-entry { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); align-items: start; }
+    .timeline-entry:first-child { border-top: none; padding-top: 0; }
+    .timeline-year { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); padding-top: 3px; }
+    .timeline-title { font-weight: 500; font-size: 1rem; margin-bottom: 3px; }
+    .timeline-sub { font-size: 0.88rem; color: var(--muted); }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; }
+    .pub-entry { padding: 24px 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
+    .pub-entry:first-child { border-top: none; padding-top: 0; }
+    .pub-year { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); background: rgba(79,143,212,0.1); border: 1px solid rgba(79,143,212,0.25); border-radius: 6px; padding: 3px 10px; white-space: nowrap; }
+    .pub-title { font-style: italic; font-family: 'Playfair Display', serif; font-size: 0.97rem; margin-bottom: 5px; }
+    .pub-meta { font-size: 0.83rem; color: var(--muted); }
+
+    /* PHD */
+    .phd-block { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .phd-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .phd-block h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 12px; font-weight: 600; }
+    .phd-block p { font-size: 0.93rem; color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
+    .phd-block p:last-child { margin-bottom: 0; }
+    .method-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .method-tag { background: rgba(79,143,212,0.1); border: 1px solid rgba(79,143,212,0.2); border-radius: 6px; padding: 3px 11px; font-size: 0.78rem; font-family: 'DM Mono', monospace; color: var(--accent); }
+
+    /* OTHER WORK */
+    .other-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .other-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: border-color 0.2s; }
+    .other-card:hover { border-color: rgba(79,143,212,0.3); }
+    .other-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 10px; font-weight: 600; }
+    .other-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; }
+
+    /* TEACHING */
+    .teaching-list { list-style: none; }
+    .teaching-list li { padding: 14px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-size: 0.93rem; }
+    .teaching-list li:first-child { border-top: none; }
+    .course-title { font-weight: 500; }
+    .course-uni { color: var(--muted); font-size: 0.83rem; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .skill-group h3 { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-top: 1px solid var(--border); font-size: 0.88rem; }
+    .skill-item:first-of-type { border-top: none; }
+    .dots { display: flex; gap: 4px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); }
+    .dot.filled { background: var(--accent); border-color: var(--accent); }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid var(--border); }
+    .contact-item:first-child { border-top: none; }
+    .contact-icon { color: var(--accent); margin-top: 2px; }
+    .contact-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .contact-value { font-size: 0.93rem; }
+    .social-links { display: flex; flex-direction: column; }
+    .social-link { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--muted); transition: color 0.2s; }
+    .social-link:first-child { border-top: none; }
+    .social-link:hover { color: var(--accent); text-decoration: none; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 36px 0; color: var(--muted); font-size: 0.83rem; }
+    footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-accent { color: var(--accent); }
+    .divider { height: 1px; background: var(--border); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-content > * { animation: fadeUp 0.7s ease both; }
+    .hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.35s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.45s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero-grid, .other-grid, .contact-grid, .skills-grid { grid-template-columns: 1fr; }
+      .profile-card { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      h1 { font-size: 2.2rem; }
+      .timeline-entry { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">Ignacio <span>Cid Pozo</span></div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#phd">PhD</a>
+        <a href="#other-work">Other Work</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">PhD Candidate · University of Lausanne</div>
+          <h1>Ignacio<br><em>Cid Pozo</em></h1>
+          <p class="hero-desc">Chilean sociologist studying lethal violence, religiosity, and social inequality in Latin America — combining spatial analysis, quantitative methods, and comparative criminology.</p>
+          <div class="hero-tags">
+            <span class="tag blue">Criminology</span>
+            <span class="tag">Lethal Violence</span>
+            <span class="tag">Latin America</span>
+            <span class="tag">Sociology of Religion</span>
+            <span class="tag">Spatial Methods</span>
+          </div>
+          <div class="button-row">
+            <a class="button" href="#contact">Get in touch</a>
+            <a class="button-secondary" href="cv.pdf" target="_blank">Download CV</a>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="profile-photo-placeholder">IC</div>
+          <div class="profile-name">Ignacio Cid Pozo</div>
+          <div class="profile-role">PhD Candidate in Criminology<br>University of Lausanne</div>
+          <ul class="profile-info">
+            <li><span class="icon">📍</span> Lausanne, Switzerland</li>
+            <li><span class="icon">✉️</span> ignacio.cidpozo@unil.ch</li>
+            <li><span class="icon">🎓</span> PhD since 2024</li>
+            <li><span class="icon">🌍</span> ES · EN · FR · PT</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-label">01 — About</div>
+        <h2>About <em>Me</em></h2>
+        <div class="card">
+          <p style="color:var(--muted);line-height:1.85;margin-bottom:18px">I completed my Bachelor's degree in Sociology at the Pontifical Catholic University of Chile (2010–2015), where I also earned my Master's degree in Sociology with a thesis on deviant religious groups, or cults, in the Chilean context.</p>
+          <p style="color:var(--muted);line-height:1.85;margin-bottom:18px">I later moved to France, where I pursued a Master's programme at the École Pratique des Hautes Études. My thesis focused on secularization theory and the extent to which its assumptions can be generalized across cultural contexts.</p>
+          <p style="color:var(--muted);line-height:1.85;margin-bottom:18px">In 2021, I briefly studied sociology of religion at Baylor University in Texas, United States, where I became particularly interested in the relationship between religion and fertility.</p>
+          <p style="color:var(--muted);line-height:1.85;margin-bottom:18px">In 2022, I joined the Center for Strategic Studies of Carabineros de Chile, the national police force of Chile, as a strategic and sociological advisor. In this role, I designed and implemented the institution's first national diagnostic study on the mental health of police officers.</p>
+          <p style="color:var(--muted);line-height:1.85;margin-bottom:32px">I am currently pursuing a PhD in Criminology at the University of Lausanne, Switzerland, under the supervision of Professor Marcelo Aebi.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div>
+              <div class="section-label" style="margin-bottom:10px">Research interests</div>
+              <ul style="list-style:none;color:var(--muted);font-size:0.9rem">
+                <li style="padding:7px 0;border-top:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--accent)">→</span> Homicide &amp; lethal violence in Latin America</li>
+                <li style="padding:7px 0;border-top:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--accent)">→</span> Spatial concentration of crime</li>
+                <li style="padding:7px 0;border-top:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--accent)">→</span> Comparative &amp; subnational criminology</li>
+                <li style="padding:7px 0;border-top:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--accent)">→</span> Sociology of religion &amp; violence</li>
+                <li style="padding:7px 0;border-top:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--accent)">→</span> Quantitative &amp; spatial methods</li>
+              </ul>
+            </div>
+            <div>
+              <div class="section-label" style="margin-bottom:10px">Education</div>
+              <ul style="list-style:none;color:var(--muted);font-size:0.88rem">
+                <li style="padding:8px 0;border-top:1px solid var(--border)"><div style="color:var(--text);font-weight:500">PhD in Criminology</div><div>University of Lausanne · 2024–present</div></li>
+                <li style="padding:8px 0;border-top:1px solid var(--border)"><div style="color:var(--text);font-weight:500">MA in Sociology</div><div>École Pratique des Hautes Études · 2019–2021</div></li>
+                <li style="padding:8px 0;border-top:1px solid var(--border)"><div style="color:var(--text);font-weight:500">MA in Sociology</div><div>Pontificia Universidad Católica de Chile · 2015–2017</div></li>
+                <li style="padding:8px 0;border-top:1px solid var(--border)"><div style="color:var(--text);font-weight:500">BA in Sociology</div><div>Pontificia Universidad Católica de Chile · 2010–2015</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PhD -->
+    <section id="phd">
+      <div class="container">
+        <div class="section-label">02 — PhD</div>
+        <h2>Lethal Violence <em>in Latin America</em></h2>
+        <div class="card">
+          <div class="phd-block">
+            <h3>Context &amp; Motivation</h3>
+            <p>I grew up in one of the most violent regions of the world: Latin America. Despite accounting for only 8% of the global population, the region concentrates roughly 40% of the world's homicides. My research explores how macro- and meso-social, institutional, geographic, and territorial conditions shape patterns of lethal violence across the region.</p>
+            <p>I am especially interested not only in where and why violence concentrates in certain places, but also in why "peace" and "resilience" persist in some territories despite structural risks and their location within a violent macro-region.</p>
+          </div>
+          <div class="phd-block">
+            <h3>Thesis Focus</h3>
+            <p>My PhD thesis focuses particularly on subnational territories, and how they challenge national-level accounts and classification of high-violence and low-violence nations. I suggest that lethal violence must be understood through the interaction between structural disadvantage, spatial opportunity, and transnational connectivity.</p>
+            <p>For this reason, my project studies homicide at both the subnational and transnational levels, under the supervision of Professor Marcelo Aebi at the University of Lausanne.</p>
+          </div>
+          <div class="phd-block">
+            <h3>Methods</h3>
+            <p>The project combines comparative and spatial approaches, including spatial analysis, longitudinal models, multilevel methods, and count-data models. I also use programming tools, especially R and Stata, for spatial data analysis, data visualization, and the construction of comparative datasets.</p>
+            <div class="method-tags">
+              <span class="method-tag">Spatial Analysis</span>
+              <span class="method-tag">Multilevel Models</span>
+              <span class="method-tag">Longitudinal Models</span>
+              <span class="method-tag">Count-Data Models</span>
+              <span class="method-tag">R</span>
+              <span class="method-tag">Stata</span>
+              <span class="method-tag">Data Visualization</span>
+              <span class="method-tag">Comparative Designs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTHER WORK -->
+    <section id="other-work">
+      <div class="container">
+        <div class="section-label">03 — Other Work</div>
+        <h2>Beyond the <em>Dissertation</em></h2>
+
+        <div class="other-grid" style="margin-bottom:28px">
+          <div class="other-card">
+            <h3>✝️ Religion &amp; Mental Health</h3>
+            <p>One of my first publications examined the effects of religiosity on individual mental health across three levels of analysis. A related article explored the impact of pornography consumption on the lives of religious individuals — a topic at the intersection of moral incongruence and psychological wellbeing.</p>
+          </div>
+          <div class="other-card">
+            <h3>👶 Religion &amp; Fertility in Chile</h3>
+            <p>I became interested in the role of religion in shaping fertility preferences and reproductive behavior in Chile, one of the countries with one of the fastest fertility declines in Latin America. I have published two articles examining how religious norms interact with individual reproductive choices.</p>
+          </div>
+          <div class="other-card">
+            <h3>🗺️ Homicide in Chile</h3>
+            <p>More recently, my research has shifted toward criminology — particularly the factors behind the distribution, concentration, and spatial patterns of homicide in Chile. Forthcoming work on these topics is expected in 2026.</p>
+          </div>
+          <div class="other-card">
+            <h3>📋 Penal Statistics</h3>
+            <p>As part of my work at the University of Lausanne, I contribute to the SPACE II project — the Council of Europe's Annual Penal Statistics on persons serving non-custodial sanctions and measures, a major comparative dataset covering European criminal justice systems.</p>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-bottom:14px">Publications</div>
+        <div class="card">
+          <div class="pub-list">
+            <div class="pub-entry">
+              <div class="pub-year">2026</div>
+              <div>
+                <div class="pub-title">Influence of religion on fertility: Transition from pro-fertility norms to individual choice norms in Chile</div>
+                <div class="pub-meta">International Journal of Latin American Religions</div>
+              </div>
+            </div>
+            <div class="pub-entry">
+              <div class="pub-year">2025</div>
+              <div>
+                <div class="pub-title">SPACE II – 2024: Council of Europe Annual Penal Statistics: Persons under the supervision of probation agencies</div>
+                <div class="pub-meta">Aebi, M. F., Cid-Pozo, I., Molnar, L., &amp; Hashimoto, Y. Z. — Council of Europe</div>
+              </div>
+            </div>
+            <div class="pub-entry">
+              <div class="pub-year">2025</div>
+              <div>
+                <div class="pub-title">Incongruencia moral: Los efectos del consumo de pornografía en la salud mental de personas religiosas</div>
+                <div class="pub-meta">Sociedad y Religión, 35(65)</div>
+              </div>
+            </div>
+            <div class="pub-entry">
+              <div class="pub-year">2025</div>
+              <div>
+                <div class="pub-title">Religión y brecha de fertilidad en Chile: Entre ideales reproductivos y realizaciones</div>
+                <div class="pub-meta">Revista Temas Sociológicos, (37), 109–142</div>
+              </div>
+            </div>
+            <div class="pub-entry">
+              <div class="pub-year">2024</div>
+              <div>
+                <div class="pub-title">Religiosidad y salud mental: tres niveles de análisis</div>
+                <div class="pub-meta">Cuadernos de Teología, 16, e6167–e6167</div>
+              </div>
+            </div>
+            <div class="pub-entry">
+              <div class="pub-year">2012</div>
+              <div>
+                <div class="pub-title">El significado del éxito en la escena musical independiente</div>
+                <div class="pub-meta">Cid, I., Del Valle, S., Monte, H., &amp; Rodríguez, F. — Medio Vínculo (Año II), 19–22</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:28px">
+          <div class="section-label" style="margin-bottom:14px">Conference Presentations</div>
+          <div class="card">
+            <div class="timeline">
+              <div class="timeline-entry">
+                <div class="timeline-year">Sep 2022</div>
+                <div>
+                  <div class="timeline-title">Secularization in dispute: a revised thesis</div>
+                  <div class="timeline-sub">UC Center for the Study of Religion, Catholic University of Chile, Santiago</div>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-year">Sep 2015</div>
+                <div>
+                  <div class="timeline-title">Islam and public sphere in the thought of Sayyid Qutb</div>
+                  <div class="timeline-sub">Congress Religion and Public Space, Catholic University of Chile, Santiago</div>
+                </div>
+              </div>
+              <div class="timeline-entry">
+                <div class="timeline-year">Aug 2015</div>
+                <div>
+                  <div class="timeline-title">Synthesis and Modernization in Latin America</div>
+                  <div class="timeline-sub">I Congress of the Religious Phenomenon, Jesuit University Alberto Hurtado, Santiago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEACHING -->
+    <section id="teaching">
+      <div class="container">
+        <div class="section-label">04 — Teaching</div>
+        <h2>Teaching <em>Experience</em></h2>
+        <div class="card">
+          <ul class="teaching-list">
+            <li><div><div class="course-title">Introduction to Sociology</div><div class="course-uni">Baylor University, USA</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)">TA</span></li>
+            <li><div><div class="course-title">Introduction to Sociology</div><div class="course-uni">University of Chile · 2015 / 2017</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)">TA</span></li>
+            <li><div><div class="course-title">Sociology of Education</div><div class="course-uni">Catholic University of Chile · 2016</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)">TA</span></li>
+            <li><div><div class="course-title">Introduction to Political Theory</div><div class="course-uni">Catholic University of Chile · 2015</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)">TA</span></li>
+            <li><div><div class="course-title">Social Ethics</div><div class="course-uni">Catholic University of Chile · 2015 / 2016</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)">TA</span></li>
+            <li><div><div class="course-title">Sociological Paradigms</div><div class="course-uni">Catholic University of Chile · 2011 / 2013</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent)">TA</span></li>
+            <li><div><div class="course-title">Latin American History</div><div class="course-uni">Lycée Jean Lurçat, Paris · 2020–2021</div></div><span style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--muted)">Instructor</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+      <div class="container">
+        <div class="section-label">05 — CV</div>
+        <h2>Curriculum <em>Vitae</em></h2>
+
+        <div class="card" style="margin-bottom:24px">
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h3>Languages</h3>
+              <div class="skill-item"><span>Spanish (Native)</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div></div>
+              <div class="skill-item"><span>English — C1</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div></div>
+              <div class="skill-item"><span>French — C1</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div></div>
+              <div class="skill-item"><span>Portuguese — B2</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></div></div>
+              <div class="skill-item"><span>Italian — B1</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></div></div>
+              <div class="skill-item"><span>German — A2/B1</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div>
+            </div>
+            <div class="skill-group">
+              <h3>Software</h3>
+              <div class="skill-item"><span>Stata</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div></div>
+              <div class="skill-item"><span>SPSS</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div></div>
+              <div class="skill-item"><span>RStudio</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></div></div>
+              <div class="skill-item"><span>LaTeX</span><div class="dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-bottom:14px">Certifications &amp; Training</div>
+        <div class="card" style="margin-bottom:24px">
+          <div class="timeline">
+            <div class="timeline-entry">
+              <div class="timeline-year">2026</div>
+              <div><div class="timeline-title">Google Data Analytics Professional Certificate</div><div class="timeline-sub">Google / Coursera</div></div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-year">2025</div>
+              <div><div class="timeline-title">Summer School of Multilevel Analysis</div><div class="timeline-sub">University of Utrecht, the Netherlands</div></div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-year">2025</div>
+              <div><div class="timeline-title">Extension Course in Socio-Spatial Data Analysis with R</div><div class="timeline-sub">Universidad de Chile</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-bottom:14px">Grants &amp; Scholarships</div>
+        <div class="card" style="margin-bottom:28px">
+          <div class="timeline">
+            <div class="timeline-entry">
+              <div class="timeline-year">2022</div>
+              <div><div class="timeline-title">Research Grant — Religious Research Association (USA)</div><div class="timeline-sub">$3,000 for project <em>Islam and Evangelicals in France: Holy competition</em></div></div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-year">2022</div>
+              <div><div class="timeline-title">Conyers Programs Intern</div><div class="timeline-sub">Young Research Program on Religion and Society</div></div>
+            </div>
+          </div>
+        </div>
+
+        <p style="text-align:center"><a class="button" href="cv.pdf" target="_blank">Download full CV (PDF)</a></p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-label">06 — Contact</div>
+        <h2>Get in <em>Touch</em></h2>
+        <div class="card">
+          <p style="color:var(--muted);margin-bottom:32px;max-width:560px">I am happy to connect regarding research collaborations, conference participation, or academic discussions. Do not hesitate to reach out.</p>
+          <div class="contact-grid">
+            <div>
+              <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:ignacio.cidpozo@unil.ch">ignacio.cidpozo@unil.ch</a></div></div></div>
+              <div class="contact-item"><div class="contact-icon">🏛️</div><div><div class="contact-label">Institution</div><div class="contact-value">University of Lausanne</div></div></div>
+              <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-value">Lausanne, Switzerland</div></div></div>
+              <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-value">(+33) 7 81 23 52 19</div></div></div>
+            </div>
+            <div>
+              <div class="section-label" style="margin-bottom:14px">Profiles &amp; Links</div>
+              <div class="social-links">
+                <a href="#" class="social-link"><span>🎓</span> Google Scholar</a>
+                <a href="#" class="social-link"><span>🔗</span> ORCID</a>
+                <a href="#" class="social-link"><span>🔬</span> ResearchGate</a>
+                <a href="#" class="social-link"><span>💼</span> LinkedIn</a>
+                <a href="#" class="social-link"><span>🐱</span> GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 <span class="footer-accent">Ignacio Cid Pozo</span> · University of Lausanne</span>
+      <span>Lausanne, Switzerland</span>
+    </div>
+  </footer>
+
+</body>
+</html>
